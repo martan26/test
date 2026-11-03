@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nová karta</title>
+    <title>Nová karta - Složka 3</title>
     <style>
       :root {
         --bg-color: #1e1f20;
@@ -228,53 +228,50 @@
   </head>
   <body>
     <div id="app-wrapper">
-      <div class="nav-wrapper">
-        <div class="nav-wrapper" id="auto-nav"></div>
+      <div class="nav-wrapper" id="auto-nav"></div>
 
-        <script>
-          (function () {
-            const container = document.getElementById("auto-nav");
-            const totalPages = 12; // Rozsah 0 až 11
+      <script>
+        (function () {
+          const container = document.getElementById("auto-nav");
+          const totalPages = 12; // Nastaveno na 20 (Rozsah 0 až 19)
 
-            // 1. ZJISTÍME, KDE JSME
-            let currentId = 0;
-            const pathSegments = window.location.pathname.split("/");
-            for (const segment of pathSegments) {
-              // Změna: /^\d+$/ bere jakákoliv čísla (tedy i 10, 11 atd.)
-              if (/^\d+$/.test(segment)) {
-                currentId = parseInt(segment);
-                break;
-              }
+          // 1. ZJISTÍME, KDE JSME
+          let currentId = 0;
+          const pathSegments = window.location.pathname.split("/");
+          for (const segment of pathSegments) {
+            if (/^\d+$/.test(segment)) {
+              currentId = parseInt(segment);
+              break;
             }
+          }
 
-            // 2. VYGENERUJEME TLAČÍTKA
-            for (let i = 0; i < totalPages; i++) {
-              if (i === currentId) continue; // Nevykreslovat tlačítko pro aktuální stránku
+          // 2. VYGENERUJEME TLAČÍTKA
+          for (let i = 0; i < totalPages; i++) {
+            if (i === currentId) continue; // Nevykreslovat tlačítko pro aktuální stránku
 
-              const a = document.createElement("a");
-              a.className = "top-nav-btn";
-              a.textContent = i;
+            const a = document.createElement("a");
+            a.className = "top-nav-btn";
+            a.textContent = i;
 
-              // Nastavení cesty
-              if (currentId === 0) {
-                // Jsme v ROOTU (0) -> odkazy vedou do "1/", "11/"
-                a.href = `${i}/index.html`;
+            // Nastavení relativní cesty (bezpečné pro jakýkoliv hosting)
+            if (currentId === 0) {
+              // Jsme v ROOTU (0) -> jdeme do podsložky
+              a.href = `${i}/index.html`;
+            } else {
+              // Jsme v PODSLOŽCE
+              if (i === 0) {
+                // Zpět na root (o úroveň výš)
+                a.href = `../index.html`;
               } else {
-                // Jsme v PODSLOŽCE
-                if (i === 0) {
-                  // Zpět na root
-                  a.href = `../index.html`;
-                } else {
-                  // Do jiné podsložky
-                  a.href = `../${i}/index.html`;
-                }
+                // Do jiné podsložky (o úroveň výš a pak do správné složky)
+                a.href = `../${i}/index.html`;
               }
-
-              container.appendChild(a);
             }
-          })();
-        </script>
-      </div>
+
+            container.appendChild(a);
+          }
+        })();
+      </script>
 
       <div id="chat-container">
         <div class="message bot-message">Ahoj! Jsem ready na všechno.</div>
@@ -346,12 +343,12 @@
       /* ================= KONFIGURACE ================= */
 
       // 1. ZDE VLOŽ SVŮJ KLÍČ
-      const API_KEY = "AIzaSyAZZYzMVQFEYZaChsUoOT25T3PmGosVHHY";
+      const API_KEY = "AIzaSyCFO0oWxDPcyA0vmmnq-uWG1eXb0WZhifM";
 
       // 2. Model - Flash je nejrychlejší a stabilní
       const MODEL_NAME = "gemini-2.5-flash";
 
-      // 3. Tvůj vyladěný prompt (Základy softwarové inženýrství)
+      // 3. Tvůj vyladěný prompt (Můžeš si ho změnit pro 3. předmět)
       const SYSTEM_PROMPT = `
 Jsi expert na předmět Základy softwarové inženýrství. Tvým úkolem je řešit příklady co nejstručněji a nejpřesněji.
 
