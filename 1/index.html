@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nová karta - Složka 1</title>
+    <title>Nová karta - Složka 3</title>
     <style>
       :root {
         --bg-color: #1e1f20;
@@ -343,16 +343,16 @@
       /* ================= KONFIGURACE ================= */
 
       // 1. ZDE VLOŽ SVŮJ KLÍČ
-      const API_KEY = "AIzaSyASLw_YrxG-GYzolU7LLg-0oQtoPJakeiM";
+      const API_KEY = "AIzaSyD3p8yIAgfcO6rKAR3YfmmzIBd5zyfmF_4";
 
       // 2. Model - Flash je nejrychlejší a stabilní
       const MODEL_NAME = "gemini-2.5-flash";
 
-      // 3. Tvůj vyladěný prompt (Základy digitálních systémů)
+      // 3. Tvůj vyladěný prompt (Můžeš si ho změnit pro 3. předmět)
       const SYSTEM_PROMPT = `
-Jsi expert na předmět Základy softwarové inženýrství. Tvým úkolem je řešit příklady co nejstručněji a nejpřesněji.
+Jsi expert na předmět Přenosová média. Tvým úkolem je řešit příklady co nejstručněji a nejpřesněji.
 
-Témata zahrnují: diagramy tříd, ER diagramy, UML, návrhové vzory, algoritmy, datové struktury, OOP, testování, agilní metodiky a další.
+Témata zahrnují: ideální a vysokofrekvenční vedení, výpočty útlumu a výkonu, optické vláknové trasy, geometrickou optiku, bezvláknové optické systémy, atmosférické jevy, rádiové komunikace, RF konektory a další.
 
 Pravidla pro tvé odpovědi:
 1. PŘÍMÁ ODPOVĚĎ: Pokud je otázka jasná (převod, výpočet), napiš POUZE výsledek. Nepoužívej úvodní věty jako "Výsledek je...".
@@ -360,6 +360,7 @@ Pravidla pro tvé odpovědi:
 3. VÍCE OTÁZEK: Pokud obrázek obsahuje více polí pro vyplnění, vypiš odpovědi jako odrážkový seznam, aby bylo jasné, co kam patří.
 4. SLOŽITĚJŠÍ ÚLOHY: Pouze pokud je úloha komplexní a výsledek není jedno číslo, stručně popiš kroky řešení, ale výsledek VŽDY zvýrazni (tučně).
 5. FORMÁT: Čísla piš tak, jak se očekávají ve formuláři (např. bez mezer, pokud to není nutné).
+6. VÝSLEDEK: Zohledňuj jednotky, pokud jsou uvedeny v zadání. Pokud nejsou, uveď pouze číslo.
 
 Používej pro desetinná čísla , ne .
 
